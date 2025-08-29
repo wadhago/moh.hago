@@ -1,0 +1,135 @@
+{
+    "name": "hospital-management-system-desktop",
+    "version": "1.0.0",
+    "description": "Hospital Management System - Desktop Application",
+    "main": "src/main.js",
+    "author": "Hospital Management System Team",
+    "license": "MIT",
+    "homepage": ".",
+    "scripts": {
+        "start": "electron .",
+        "dev": "electron . --dev",
+        "build": "electron-builder",
+        "build:win": "electron-builder --win",
+        "build:mac": "electron-builder --mac",
+        "build:linux": "electron-builder --linux",
+        "build:all": "electron-builder --win --mac --linux",
+        "pack": "electron-builder --dir",
+        "dist": "npm run build:all",
+        "postinstall": "electron-builder install-app-deps",
+        "test": "echo \"No tests specified yet\" && exit 0",
+        "lint": "eslint src/ --ext .js --fix",
+        "format": "prettier --write src/",
+        "format:check": "prettier --check src/",
+        "prepare-icons": "node scripts/prepare-icons.js",
+        "ci:build": "npm run prepare-icons && npm run build"
+    },
+    "devDependencies": {
+        "electron": "^27.0.0",
+        "electron-builder": "^24.6.4",
+        "eslint": "^8.57.0",
+        "prettier": "^3.0.0"
+    },
+    "dependencies": {
+        "electron-log": "^4.4.8",
+        "electron-updater": "^6.1.4",
+        "axios": "^1.6.0"
+    },
+    "build": {
+        "appId": "com.hospital.management.system",
+        "productName": "Hospital Management System",
+        "copyright": "Copyright © 2024 Hospital Management System Team",
+        "directories": {
+            "output": "dist",
+            "buildResources": "build"
+        },
+        "files": [
+            "src/**/*",
+            "assets/**/*",
+            "node_modules/**/*",
+            "package.json"
+        ],
+        "extraResources": [{
+            "from": "../",
+            "to": "backend",
+            "filter": [
+                "**/*",
+                "!desktop/**",
+                "!node_modules/**",
+                "!*.pyc",
+                "!__pycache__/**",
+                "!.git/**",
+                "!venv/**",
+                "!env/**"
+            ]
+        }],
+        "win": {
+            "target": [{
+                    "target": "nsis",
+                    "arch": ["x64"]
+                },
+                {
+                    "target": "portable",
+                    "arch": ["x64"]
+                }
+            ],
+            "icon": "assets/icon.ico",
+            "requestedExecutionLevel": "asInvoker"
+        },
+        "nsis": {
+            "oneClick": false,
+            "perMachine": false,
+            "allowToChangeInstallationDirectory": true,
+            "deleteAppDataOnUninstall": false,
+            "createDesktopShortcut": true,
+            "createStartMenuShortcut": true,
+            "shortcutName": "Hospital Management System"
+        },
+        "mac": {
+            "target": [{
+                "target": "dmg",
+                "arch": ["x64", "arm64"]
+            }],
+            "icon": "assets/icon.icns",
+            "category": "public.app-category.medical",
+            "hardenedRuntime": true,
+            "gatekeeperAssess": false,
+            "entitlements": "build/entitlements.mac.plist",
+            "entitlementsInherit": "build/entitlements.mac.plist"
+        },
+        "dmg": {
+            "title": "Hospital Management System ${version}",
+            "icon": "assets/icon.icns",
+            "background": "assets/dmg-background.png",
+            "window": {
+                "width": 540,
+                "height": 380
+            },
+            "contents": [{
+                    "x": 140,
+                    "y": 200,
+                    "type": "file"
+                },
+                {
+                    "x": 400,
+                    "y": 200,
+                    "type": "link",
+                    "path": "/Applications"
+                }
+            ]
+        },
+        "linux": {
+            "target": [{
+                    "target": "AppImage",
+                    "arch": ["x64"]
+                },
+                {
+                    "target": "deb",
+                    "arch": ["x64"]
+                }
+            ],
+            "icon": "assets/icon.png",
+            "category": "Office"
+        }
+    }
+}

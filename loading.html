@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System - Loading</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .loading-container {
+            text-align: center;
+            max-width: 500px;
+            padding: 2rem;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .logo-icon {
+            font-size: 4rem;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .status-text {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 1rem;
+            font-weight: 400;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: white;
+            border-radius: 2px;
+            animation: progress 3s ease-in-out infinite;
+        }
+        
+        @keyframes progress {
+            0% {
+                width: 0%;
+            }
+            50% {
+                width: 70%;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+        
+        .features-list {
+            text-align: left;
+            margin-top: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .features-list h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.9;
+        }
+        
+        .feature-icon {
+            font-size: 1rem;
+        }
+        /* Bilingual support */
+        
+        [lang="ar"] {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            direction: rtl;
+        }
+        
+        [lang="ar"] .features-grid {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading-container">
+        <div class="logo">
+            <div class="logo-icon">🏥</div>
+        </div>
+
+        <h1 id="title">Hospital Management System</h1>
+        <p class="subtitle" id="subtitle">Comprehensive Healthcare Solution</p>
+
+        <div class="loading-spinner"></div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+
+        <p class="status-text" id="status">Starting backend server...</p>
+
+        <div class="features-list">
+            <h3 id="features-title">System Features</h3>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">👥</span>
+                    <span id="feature-patients">Patient Management</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">👨‍⚕️</span>
+                    <span id="feature-doctors">Doctor Profiles</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🚑</span>
+                    <span id="feature-emergency">Emergency Care</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🧪</span>
+                    <span id="feature-laboratory">Laboratory</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💊</span>
+                    <span id="feature-pharmacy">Pharmacy</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💰</span>
+                    <span id="feature-billing">Billing</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🌐</span>
+                    <span id="feature-bilingual">Bilingual UI</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🎨</span>
+                    <span id="feature-themes">Multiple Themes</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Bilingual support
+        const translations = {
+            en: {
+                title: 'Hospital Management System',
+                subtitle: 'Comprehensive Healthcare Solution',
+                status: 'Starting backend server...',
+                featuresTitle: 'System Features',
+                featurePatients: 'Patient Management',
+                featureDoctors: 'Doctor Profiles',
+                featureEmergency: 'Emergency Care',
+                featureLaboratory: 'Laboratory',
+                featurePharmacy: 'Pharmacy',
+                featureBilling: 'Billing',
+                featureBilingual: 'Bilingual UI',
+                featureThemes: 'Multiple Themes'
+            },
+            ar: {
+                title: 'نظام إدارة المستشفيات',
+                subtitle: 'حل شامل للرعاية الصحية',
+                status: 'جاري تشغيل الخادم...',
+                featuresTitle: 'مميزات النظام',
+                featurePatients: 'إدارة المرضى',
+                featureDoctors: 'ملفات الأطباء',
+                featureEmergency: 'رعاية الطوارئ',
+                featureLaboratory: 'المختبر',
+                featurePharmacy: 'الصيدلية',
+                featureBilling: 'الفواتير',
+                featureBilingual: 'واجهة ثنائية اللغة',
+                featureThemes: 'قوالب متعددة'
+            }
+        };
+
+        // Detect system language
+        const systemLang = navigator.language.startsWith('ar') ? 'ar' : 'en';
+
+        function setLanguage(lang) {
+            const t = translations[lang];
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+            document.getElementById('title').textContent = t.title;
+            document.getElementById('subtitle').textContent = t.subtitle;
+            document.getElementById('status').textContent = t.status;
+            document.getElementById('features-title').textContent = t.featuresTitle;
+            document.getElementById('feature-patients').textContent = t.featurePatients;
+            document.getElementById('feature-doctors').textContent = t.featureDoctors;
+            document.getElementById('feature-emergency').textContent = t.featureEmergency;
+            document.getElementById('feature-laboratory').textContent = t.featureLaboratory;
+            document.getElementById('feature-pharmacy').textContent = t.featurePharmacy;
+            document.getElementById('feature-billing').textContent = t.featureBilling;
+            document.getElementById('feature-bilingual').textContent = t.featureBilingual;
+            document.getElementById('feature-themes').textContent = t.featureThemes;
+        }
+
+        // Set initial language
+        setLanguage(systemLang);
+
+        // Simulate progress updates
+        const statusMessages = {
+            en: [
+                'Initializing system...',
+                'Loading database models...',
+                'Starting authentication service...',
+                'Configuring bilingual support...',
+                'Preparing user interface...',
+                'System ready!'
+            ],
+            ar: [
+                'جاري تشغيل النظام...',
+                'تحميل نماذج قاعدة البيانات...',
+                'تشغيل خدمة المصادقة...',
+                'إعداد الدعم ثنائي اللغة...',
+                'تجهيز واجهة المستخدم...',
+                'النظام جاهز!'
+            ]
+        };
+
+        let messageIndex = 0;
+        const updateStatus = () => {
+            const messages = statusMessages[systemLang];
+            if (messageIndex < messages.length - 1) {
+                document.getElementById('status').textContent = messages[messageIndex];
+                messageIndex++;
+                setTimeout(updateStatus, 2000);
+            }
+        };
+
+        // Start status updates
+        setTimeout(updateStatus, 1000);
+    </script>
+</body>
+
+</html>
